@@ -157,7 +157,10 @@ $(() => {
 		});
 	}
 
-	var deadline = new Date(new Date().getTime() + 33 * 24 * 60 * 60 * 1000);
+	var date = new Date(),
+		utcCorrection = (-date.getTimezoneOffset() - 60 * 3) * 60 * 1000,
+		deadline = new Date((date.getTime() + secondTo * 1000) - utcCorrection);
+
 	initializeClock('timer', deadline);
 });
 
