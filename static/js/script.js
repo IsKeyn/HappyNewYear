@@ -157,11 +157,13 @@ $(() => {
 		});
 	}
 
-	var date = new Date(),
-		utcCorrection = (-date.getTimezoneOffset() - 60 * 3) * 60 * 1000,
-		deadline = new Date((date.getTime() + secondTo * 1000) - utcCorrection);
+	if (secondTo) {
+		var date = new Date(),
+			utcCorrection = (-date.getTimezoneOffset() - 60 * 3) * 60 * 1000,
+			deadline = new Date((date.getTime() + secondTo * 1000) - utcCorrection);
 
-	initializeClock('timer', deadline);
+		initializeClock('timer', deadline);
+	}
 });
 
 $(window).resize(function() {
